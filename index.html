@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Sazan File</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="A plain-language, interactive guide to the Kushner-linked Sazan and Zvërnec resort deals, the corporate records behind them, and Albania's Flamingo protest movement.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: case file — sticky section nav, a narrative stepper, then a full-width interactive network with a detail panel */
+:root{
+  --bg:#f3f5f4;--surface:#ffffff;--ink:#16201f;--muted:#56625f;--rule:#d5dcda;
+  --accent:#b8456a;--accent-soft:#f6e3ea;
+  --reg:#2d6b62;--reg-soft:#dcece8;
+  --press:#5a5f8f;--press-soft:#e4e5f2;
+  --alleg:#9a6418;--alleg-soft:#f5e9d6;
+  --f-display:"Familjen Grotesk","Helvetica Neue",Arial,sans-serif;
+  --f-body:"Newsreader",Georgia,"Times New Roman",serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#121817;--surface:#1a2221;--ink:#e4ebe9;--muted:#9aa8a4;--rule:#2e3a38;
+  --accent:#e58aa8;--accent-soft:#3a2129;--reg:#7cc4b6;--reg-soft:#1c3330;
+  --press:#a9adde;--press-soft:#26283d;--alleg:#e0ad5f;--alleg-soft:#382b17;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121817;--surface:#1a2221;--ink:#e4ebe9;--muted:#9aa8a4;--rule:#2e3a38;
+  --accent:#e58aa8;--accent-soft:#3a2129;--reg:#7cc4b6;--reg-soft:#1c3330;
+  --press:#a9adde;--press-soft:#26283d;--alleg:#e0ad5f;--alleg-soft:#382b17;color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:18px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+img{max-width:100%}
+[hidden]{display:none!important}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:3px}
+.wrap{max-width:1100px;margin:0 auto}
+.col{max-width:680px}
+h1,h2,h3{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+h2{font-size:clamp(1.5rem,3.4vw,2rem);font-weight:700;letter-spacing:-.01em}
+h3{font-size:1.12rem;font-weight:600}
+p{margin:0}
+.mono{font-family:var(--f-mono);font-size:.82em}
+.label{font-family:var(--f-display);font-size:.75rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.muted{color:var(--muted)}
+
+/* sticky nav */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+nav.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--rule);
+  margin-left:calc(-1 * max(16px,env(safe-area-inset-left,0px)));margin-right:calc(-1 * max(16px,env(safe-area-inset-right,0px)));
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+nav.top .in{max-width:1100px;margin:0 auto;display:flex;gap:18px;align-items:center;overflow-x:auto;padding-block:12px;scrollbar-width:none}
+nav.top .in::-webkit-scrollbar{display:none}
+nav.top a{font-family:var(--f-display);font-size:.9rem;font-weight:500;color:var(--muted);text-decoration:none;white-space:nowrap}
+nav.top a:hover,nav.top a.on{color:var(--ink)}
+nav.top .brand{color:var(--accent);font-weight:700;margin-right:6px}
+
+/* hero */
+header.hero{padding-block:52px 40px;display:grid;gap:20px;border-bottom:1px solid var(--rule)}
+.stamp{font-family:var(--f-mono);font-size:.78rem;color:var(--accent);border:1.5px solid var(--accent);padding:4px 10px;border-radius:2px;
+  width:max-content;max-width:100%;transform:rotate(-1.2deg)}
+h1{font-size:clamp(2.4rem,6.5vw,4.2rem);font-weight:700;letter-spacing:-.025em}
+h1 span{color:var(--accent)}
+.lede{font-size:1.22rem;max-width:660px}
+.tldr{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:8px}
+.tldr div{border-top:2px solid var(--ink);padding-top:12px;display:grid;gap:6px;min-width:0}
+.tldr b{font-family:var(--f-display);font-size:1.05rem}
+.tldr p{font-size:.98rem;color:var(--muted)}
+
+section{padding-block:56px 8px;display:grid;gap:24px}
+.sec-head{display:grid;gap:10px}
+
+/* evidence tags */
+.tag{display:inline-block;font-family:var(--f-display);font-size:.7rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  padding:2px 7px;border-radius:2px;white-space:nowrap;vertical-align:2px}
+.t-reg{background:var(--reg-soft);color:var(--reg)}
+.t-press{background:var(--press-soft);color:var(--press)}
+.t-alleg{background:var(--alleg-soft);color:var(--alleg)}
+.legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.legend div{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:14px 16px;display:grid;gap:6px;font-size:.95rem}
+
+/* story stepper */
+.story{background:var(--surface);border:1px solid var(--rule);border-radius:4px;display:grid;grid-template-columns:220px 1fr;min-height:340px}
+.story .steps{list-style:none;margin:0;padding:12px 0;border-right:1px solid var(--rule);display:grid;align-content:start}
+.story .steps button{all:unset;cursor:pointer;display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:baseline;padding:12px 18px;
+  font-family:var(--f-display);font-size:.95rem;color:var(--muted)}
+.story .steps button .n{font-family:var(--f-mono);font-size:.8rem}
+.story .steps button[aria-selected="true"]{color:var(--ink);background:var(--accent-soft);box-shadow:inset 3px 0 0 var(--accent)}
+.story .steps button:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.story .pane{padding:28px 32px;display:grid;gap:16px;align-content:start;min-width:0}
+.story .pane h3{font-size:1.5rem;font-weight:700}
+.story .why{background:var(--bg);border-left:3px solid var(--accent);padding:12px 16px;font-size:.98rem;display:grid;gap:4px}
+.story .ctrl{display:flex;gap:10px;margin-top:6px;flex-wrap:wrap}
+.btn{font-family:var(--f-display);font-size:.9rem;font-weight:600;padding:8px 16px;border-radius:2px;cursor:pointer;border:1px solid var(--ink);background:var(--ink);color:var(--bg)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--rule)}
+.btn:disabled{opacity:.35;cursor:default}
+
+/* network */
+.net{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:20px;align-items:start}
+.canvas{background:var(--surface);border:1px solid var(--rule);border-radius:4px;overflow-x:auto}
+.canvas svg{display:block;width:100%;min-width:720px;height:auto}
+.canvas .hint{font-family:var(--f-display);font-size:.85rem;color:var(--muted);padding:10px 16px;border-top:1px solid var(--rule);min-width:720px}
+svg .edge{fill:none;stroke-width:1.6}
+svg .edge.reg{stroke:var(--reg)}
+svg .edge.press{stroke:var(--press);stroke-dasharray:6 4}
+svg .edge.alleg{stroke:var(--alleg);stroke-dasharray:2 4}
+svg .edge.dim{opacity:.12}
+svg .edge.lit{stroke-width:3}
+svg .node{cursor:pointer}
+svg .node rect{fill:var(--bg);stroke:var(--rule);stroke-width:1.2}
+svg .node.k-person rect{rx:26}
+svg .node.k-gov rect{fill:var(--press-soft)}
+svg .node.k-place rect{fill:var(--accent-soft);stroke:var(--accent)}
+svg .node.k-probe rect{fill:var(--alleg-soft)}
+svg .node text{fill:var(--ink);font-family:var(--f-display);font-size:13px;font-weight:600;text-anchor:middle;pointer-events:none}
+svg .node text.sub{fill:var(--muted);font-weight:500;font-size:11px}
+svg .node.dim{opacity:.28}
+svg .node.sel rect{stroke:var(--accent);stroke-width:2.6}
+svg .node:focus-visible rect{stroke:var(--accent);stroke-width:2.6}
+svg .node:focus{outline:none}
+.panel{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:20px;display:grid;gap:14px;position:sticky;top:calc(env(safe-area-inset-top,0px) + 64px);min-width:0}
+.panel h3{font-size:1.3rem}
+.panel .what{font-size:1rem}
+.panel dl{margin:0;display:grid;gap:8px;font-size:.88rem}
+.panel dt{font-family:var(--f-display);font-weight:600;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.panel dd{margin:0}
+.panel ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.panel li{font-size:.92rem;display:grid;gap:2px;border-top:1px solid var(--rule);padding-top:8px}
+.panel li button{all:unset;cursor:pointer;font-family:var(--f-display);font-weight:600;color:var(--accent)}
+.panel li button:focus-visible{outline:2px solid var(--accent)}
+.keyrow{display:flex;flex-wrap:wrap;gap:14px;font-family:var(--f-display);font-size:.82rem;color:var(--muted)}
+.keyrow span{display:inline-flex;align-items:center;gap:6px}
+.keyrow svg{width:30px;height:8px}
+
+/* timeline */
+.filters{display:flex;flex-wrap:wrap;gap:8px}
+.filters button{font-family:var(--f-display);font-size:.85rem;font-weight:500;padding:6px 12px;border-radius:2px;cursor:pointer;border:1px solid var(--rule);background:var(--surface);color:var(--ink)}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+ol.tl{list-style:none;margin:0;padding:0;display:grid;border-left:2px solid var(--rule)}
+ol.tl li{display:grid;grid-template-columns:130px 1fr;gap:4px 20px;padding:14px 0 14px 20px;position:relative}
+ol.tl li::before{content:"";position:absolute;left:-6px;top:22px;width:10px;height:10px;border-radius:50%;background:var(--bg);border:2px solid var(--muted)}
+ol.tl li.hot::before{border-color:var(--accent);background:var(--accent)}
+.tl .date{font-family:var(--f-mono);font-size:.82rem;color:var(--muted);padding-top:4px;font-variant-numeric:tabular-nums}
+.tl .body{min-width:0;display:grid;gap:4px}
+.tl .src{font-family:var(--f-display);font-size:.8rem;color:var(--muted)}
+
+/* who's who */
+.people{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.person{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:18px 20px;display:grid;gap:10px;align-content:start;min-width:0}
+.person .role{font-family:var(--f-display);font-size:.85rem;color:var(--muted)}
+.person .flags{display:flex;flex-wrap:wrap;gap:4px}
+.flag{font-family:var(--f-mono);font-size:.72rem;padding:1px 6px;border-radius:2px;border:1px solid var(--rule);color:var(--muted);white-space:nowrap}
+.flag.pep{border-color:var(--press);color:var(--press)}
+.flag.law{border-color:var(--alleg);color:var(--alleg)}
+.flag.no{border-color:var(--reg);color:var(--reg)}
+.person p{font-size:.98rem}
+.person .tie{font-size:.9rem;border-top:1px solid var(--rule);padding-top:10px}
+.person .tie b{font-family:var(--f-display);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:block}
+
+/* glossary */
+.gloss{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:10px}
+details{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:14px 18px}
+summary{cursor:pointer;font-family:var(--f-display);font-weight:600;font-size:1.02rem}
+details p{margin-top:10px;font-size:.98rem}
+
+.callout{border-left:3px solid var(--accent);padding:4px 0 4px 18px}
+ul.plain{margin:0;padding-left:1.1em;display:grid;gap:8px}
+.sources{columns:2 300px;column-gap:40px;font-size:.92rem;margin:0;padding-left:1.2em}
+.sources li{break-inside:avoid;margin-bottom:8px}
+footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--rule);color:var(--muted);font-family:var(--f-display);font-size:.85rem;display:grid;gap:6px}
+
+@media (max-width:900px){
+  .net{grid-template-columns:1fr}
+  .panel{position:static}
+}
+@media (max-width:640px){
+  body{font-size:17px}
+  .story{grid-template-columns:1fr}
+  .story .steps{border-right:0;border-bottom:1px solid var(--rule);display:flex;overflow-x:auto;padding:0}
+  .story .steps button{grid-template-columns:auto;padding:12px 14px;white-space:nowrap}
+  .story .steps button .t{display:none}
+  .story .steps button[aria-selected="true"]{box-shadow:inset 0 -3px 0 var(--accent)}
+  .story .pane{padding:22px 18px}
+  ol.tl li{grid-template-columns:1fr}
+  header.hero{padding-block:36px 28px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<nav class="top" aria-label="Sections">
+  <div class="in">
+    <a class="brand" href="#top">The Sazan File</a>
+    <a href="#story">The story</a>
+    <a href="#map">Money map</a>
+    <a href="#timeline">Timeline</a>
+    <a href="#people">Who's who</a>
+    <a href="#terms">Key terms</a>
+    <a href="#unknowns">Unknowns</a>
+    <a href="#sources">Sources</a>
+  </div>
+</nav>
+
+<div class="wrap" id="top">
+
+<header class="hero">
+  <div class="stamp">CASE FILE · VLORË BAY · OPEN</div>
+  <h1>The Sazan File<span>.</span></h1>
+  <p class="lede">Albania's government fast-tracked a luxury resort project linked to Jared Kushner on a protected island and coastline. Anti-corruption prosecutors are now investigating how the land was opened up. The anger it sparked has grown into the biggest protest movement in years.</p>
+  <div class="tldr">
+    <div><b>The place</b><p>Sazan Island and the Zvërnec coast near Vlorë, home to flamingos, monk seals and sea turtles.</p></div>
+    <div><b>The deal</b><p>A $1.4bn island resort plus a coastal project the PM put at €4bn, with special "strategic investor" fast-track status.</p></div>
+    <div><b>The probe</b><p>Since June 2026, prosecutors have been examining a 2024 law change, contracts awarded without tenders, and where the land money came from.</p></div>
+    <div><b>The protests</b><p>Students and environmentalists, the "Flamingo" movement, demand PM Edi Rama's resignation.</p></div>
+  </div>
+</header>
+
+<section aria-labelledby="evidence">
+  <div class="sec-head col">
+    <span class="label">Before you start</span>
+    <h2 id="evidence">Every claim has a colour</h2>
+    <p>This site mixes official records with journalism and open accusations. Each is marked so you always know how solid a claim is.</p>
+  </div>
+  <div class="legend">
+    <div><span class="tag t-reg" style="width:max-content">Registry record</span><span>A company register or official filing says this exists. Strongest evidence.</span></div>
+    <div><span class="tag t-press" style="width:max-content">Press report</span><span>Reported by a named news outlet. Reliable, but secondhand.</span></div>
+    <div><span class="tag t-alleg" style="width:max-content">Allegation</span><span>Under investigation or disputed. Not proven, and not a finding of guilt.</span></div>
+  </div>
+</section>
+
+<section id="story" aria-labelledby="story-h">
+  <div class="sec-head col">
+    <span class="label">The story in five steps</span>
+    <h2 id="story-h">What happened, in plain words</h2>
+  </div>
+  <div class="story">
+    <div class="steps" role="tablist" aria-label="Story chapters" id="steps"></div>
+    <div class="pane" role="tabpanel" id="pane" aria-live="polite"></div>
+  </div>
+</section>
+
+<section id="map" aria-labelledby="map-h">
+  <div class="sec-head col">
+    <span class="label">Interactive · data from Sayari company records</span>
+    <h2 id="map-h">The money map</h2>
+    <p>Who is connected to whom, and how we know. <strong>Click any box</strong> to see a plain-English explanation and its connections. Solid lines come from official registers; dashed and dotted lines come from reporting or allegations.</p>
+  </div>
+  <div class="keyrow">
+    <span><svg viewBox="0 0 30 8" aria-hidden="true"><line x1="0" y1="4" x2="30" y2="4" stroke="var(--reg)" stroke-width="2"/></svg>Registry record</span>
+    <span><svg viewBox="0 0 30 8" aria-hidden="true"><line x1="0" y1="4" x2="30" y2="4" stroke="var(--press)" stroke-width="2" stroke-dasharray="6 4"/></svg>Press report</span>
+    <span><svg viewBox="0 0 30 8" aria-hidden="true"><line x1="0" y1="4" x2="30" y2="4" stroke="var(--alleg)" stroke-width="2" stroke-dasharray="2 4"/></svg>Allegation / unconfirmed</span>
+  </div>
+  <div class="net">
+    <div class="canvas">
+      <svg id="graph" viewBox="0 0 900 520" role="group" aria-label="Network of people, companies and institutions"></svg>
+      <div class="hint">Tip: use Tab to move between boxes and Enter to select one. Click empty space to reset.</div>
+    </div>
+    <aside class="panel" id="panel" aria-live="polite"></aside>
+  </div>
+</section>
+
+<section id="timeline" aria-labelledby="tl-h">
+  <div class="sec-head col">
+    <span class="label">Chronology</span>
+    <h2 id="tl-h">Timeline</h2>
+  </div>
+  <div class="filters" role="group" aria-label="Filter timeline by evidence type">
+    <button type="button" id="f-all" data-f="all" aria-pressed="true">All entries</button>
+    <button type="button" id="f-reg" data-f="reg" aria-pressed="false">Registry records</button>
+    <button type="button" id="f-press" data-f="press" aria-pressed="false">Press reports</button>
+    <button type="button" id="f-alleg" data-f="alleg" aria-pressed="false">Allegations</button>
+  </div>
+  <ol class="tl" id="tl">
+    <li data-k="reg"><span class="date">5 Apr 2023</span><div class="body"><p><span class="tag t-reg">Registry</span> Atlantic Incubation Partners LLC is registered in Delaware (file no. <span class="mono">7390750</span>).</p><span class="src">Delaware Secretary of State, via Sayari</span></div></li>
+    <li data-k="press"><span class="date">Mar 2024</span><div class="body"><p><span class="tag t-press">Press</span> Kushner announces plans for Sazan and Zvërnec. The New York Times quotes businessman Musa Kastrati saying his company would play a role.</p><span class="src">New York Times, as cited by HLRN and BIRN</span></div></li>
+    <li data-k="press"><span class="date">2024</span><div class="body"><p><span class="tag t-press">Press</span> Albania amends protected-area law, opening parts of the Vjosa-Narta protected landscape to development.</p><span class="src">BIRN; Politico Europe</span></div></li>
+    <li data-k="reg"><span class="date">21 Oct 2024</span><div class="body"><p><span class="tag t-reg">Registry</span> Atlantic Eagle Dhabi Partners Holding Ltd is incorporated in Abu Dhabi. Its directors are Jared Kushner and Mohamed Alabbar.</p><span class="src">Abu Dhabi Global Market registry, via Sayari</span></div></li>
+    <li data-k="reg"><span class="date">17 Dec 2024</span><div class="body"><p><span class="tag t-reg">Registry</span> A new Kastrati Group shpk is registered in Tirana, 100% owned by Shefqet Kastrati.</p><span class="src">Albania National Business Center, via Sayari</span></div></li>
+    <li data-k="press"><span class="date">30 Dec 2024</span><div class="body"><p><span class="tag t-press">Press</span> Investment agency AIDA grants "strategic investor" status for the Sazan resort, reportedly without a business plan or feasibility study.</p><span class="src">China-CEE Institute citing AIDA; Mother Jones</span></div></li>
+    <li data-k="press"><span class="date">Jan 2025</span><div class="body"><p><span class="tag t-press">Press</span> Preliminary approval for the roughly $1.4bn island resort, days before the US presidential inauguration.</p><span class="src">Multiple outlets</span></div></li>
+    <li data-k="reg"><span class="date">21 May 2025</span><div class="body"><p><span class="tag t-reg">Registry</span> Albania Land Development shpk is registered in Vlorë. Beneficial owners: two Alkhayyat brothers, 50% each.</p><span class="src">Albania Register of Beneficial Owners, via Sayari</span></div></li>
+    <li data-k="press" class="hot"><span class="date">May 2026</span><div class="body"><p><span class="tag t-press">Press</span> Fences go up at Zvërnec, blocking the beach. Locals protest, and the Flamingo movement begins.</p><span class="src">Politico Europe; France 24</span></div></li>
+    <li data-k="alleg" class="hot"><span class="date">1 Jun 2026</span><div class="body"><p><span class="tag t-alleg">Allegation</span> SPAK confirms an investigation into the protected-status change, contracts awarded without tenders, and the source of land funds.</p><span class="src">Politico Europe; Al Jazeera</span></div></li>
+    <li data-k="press"><span class="date">4 Jun 2026</span><div class="body"><p><span class="tag t-press">Press</span> The government says the Zvërnec investors are "the two co-owners of Power International Holding" of Qatar. AFP finds no legal trace of the company named as managing the project.</p><span class="src">France 24 / AFP</span></div></li>
+    <li data-k="alleg"><span class="date">Jun 2026</span><div class="body"><p><span class="tag t-alleg">Allegation</span> Prosecutors reportedly freeze Albania Land Development's bank accounts over allegedly fraudulent land titles.</p><span class="src">Reactionary International, citing judicial sources (single source)</span></div></li>
+    <li data-k="press"><span class="date">11 Jun 2026</span><div class="body"><p><span class="tag t-press">Press</span> The US waives its 2021 corruption designation of opposition leader Sali Berisha.</p><span class="src">European Western Balkans</span></div></li>
+    <li data-k="press" class="hot"><span class="date">mid-Oct 2026</span><div class="body"><p><span class="tag t-press">Press</span> Student strikes. Protests spread across Tirana and turn violent, with hundreds of injuries and arrests reported.</p><span class="src">Al Jazeera; NPR; Democracy Now</span></div></li>
+    <li data-k="press" class="hot"><span class="date">31 Oct 2026</span><div class="body"><p><span class="tag t-press">Press</span> Clashes outside the Council of Ministers. Rama refuses to resign; the next election is due in 2029.</p><span class="src">AP footage via Hindustan Times; Novinite</span></div></li>
+    <li data-k="press" class="hot"><span class="date">2 Nov 2026</span><div class="body"><p><span class="tag t-press">Press</span> Medical students leave lectures to join the protests.</p><span class="src">BalkanWeb</span></div></li>
+  </ol>
+</section>
+
+<section id="people" aria-labelledby="people-h">
+  <div class="sec-head col">
+    <span class="label">Who's who</span>
+    <h2 id="people-h">The main players</h2>
+    <p>Flags come from Sayari's risk data, which draws largely on news coverage. A "corruption" flag means someone has been publicly accused or charged. It is not a verdict. Family members who appear in the records are not shown here.</p>
+  </div>
+  <div class="people">
+    <article class="person">
+      <span class="label">Government</span>
+      <h3><a href="https://graph.sayari.com/resource/entity/vWWLbWhxqimRHtU0d1txYA">Edi Rama</a></h3>
+      <span class="role">Prime Minister since 2013 · Socialist Party</span>
+      <div class="flags"><span class="flag pep">PEP</span><span class="flag no">not sanctioned</span><span class="flag">corruption (media)</span></div>
+      <p>His government backed the resort and gave it fast-track status. He has refused to resign and says protests could hurt Albania's EU bid.</p>
+      <p class="tie"><b>Tie to the deal</b>Political: his government approved it. Sayari shows no personal ownership or business link to any project company.</p>
+    </article>
+    <article class="person">
+      <span class="label">Investor</span>
+      <h3><a href="https://graph.sayari.com/resource/entity/AcRddw24EjmWs7m3CDZmzg">Jared Kushner</a></h3>
+      <span class="role">Founder of Affinity Partners · US special envoy</span>
+      <div class="flags"><span class="flag no">not sanctioned</span></div>
+      <p>He and Ivanka Trump announced the Albania plans in 2024. Critics question the overlap between his business deals and his diplomatic role. He and the Albanian government say the family connection played no part.</p>
+      <p class="tie"><b>Tie to the deal</b>Registry: a director of Atlantic Eagle Dhabi Partners Holding, alongside Mohamed Alabbar. <span class="tag t-reg">Registry</span></p>
+    </article>
+    <article class="person">
+      <span class="label">Investor</span>
+      <h3><a href="https://graph.sayari.com/resource/entity/gdKlzPqoO5Fxm3VvsaehLA">Mohamed Alabbar</a></h3>
+      <span class="role">Emirati developer · Eagle Hills founder</span>
+      <div class="flags"><span class="flag no">not sanctioned</span></div>
+      <p>His company Eagle Hills is behind the Durrës port redevelopment in Albania and partnered with Kushner on a Belgrade project that was later dropped.</p>
+      <p class="tie"><b>Tie to the deal</b>Registry: co-director with Kushner of the Abu Dhabi holding company. What that company holds in Albania is not in the records.</p>
+    </article>
+    <article class="person">
+      <span class="label">Business</span>
+      <h3><a href="https://graph.sayari.com/resource/entity/ZYjhEF8ozBNzt7YGY5hdSA">Shefqet Kastrati</a></h3>
+      <span class="role">Albanian businessman · Kastrati Group</span>
+      <div class="flags"><span class="flag">no risk flags</span></div>
+      <p>Described by BIRN as one of Albania's biggest oligarchs. People linked to his group appear in the reporting on the Zvërnec land network.</p>
+      <p class="tie"><b>Tie to the deal</b>Reported and alleged only. Sayari shows no ownership link to the project companies. <span class="tag t-alleg">Allegation</span></p>
+    </article>
+    <article class="person">
+      <span class="label">Investigators</span>
+      <h3>SPAK</h3>
+      <span class="role">Special Prosecution Office Against Corruption and Organized Crime</span>
+      <p>An independent prosecutor set up with EU and US backing in 2019. Polls rank it as Albania's most trusted institution. It has prosecuted officials from both main parties.</p>
+      <p class="tie"><b>Role</b>Investigating the Sazan and Zvërnec deals since 1 June 2026.</p>
+    </article>
+    <article class="person">
+      <span class="label">Government · on trial</span>
+      <h3><a href="https://graph.sayari.com/resource/entity/710eM8QNFky52B4huV_1nQ">Erion Veliaj</a></h3>
+      <span class="role">Mayor of Tirana · Socialist Party</span>
+      <div class="flags"><span class="flag law">law-enforcement action</span><span class="flag">corruption</span><span class="flag">financial crime</span></div>
+      <p>Detained since February 2025 and on trial on 13 charges, including passive corruption and money laundering. He denies them.</p>
+      <p class="tie"><b>Tie to the deal</b>None found. He is the highest-profile live corruption case in the ruling party.</p>
+    </article>
+    <article class="person">
+      <span class="label">Opposition · on trial</span>
+      <h3><a href="https://graph.sayari.com/resource/entity/6_HLKzffSFhSyev9XK7o8g">Sali Berisha</a></h3>
+      <span class="role">Democratic Party leader · former PM and President</span>
+      <div class="flags"><span class="flag pep">PEP</span><span class="flag law">law-enforcement action</span><span class="flag">corruption</span></div>
+      <p>The US designated him for "significant corruption" in 2021 and waived it in June 2026. He is on trial in SPAK's "Partizani" case, which he calls political, and he now backs the protests.</p>
+      <p class="tie"><b>Tie to the deal</b>None found. He matters because many protesters reject both main parties.</p>
+    </article>
+    <article class="person">
+      <span class="label">The movement</span>
+      <h3>The Flamingo movement</h3>
+      <span class="role">Environmentalists, residents, students, now medical students too</span>
+      <p>It started in May over fences on the Zvërnec beach and has widened into anger over corruption, tuition, low wages and emigration. It is leaderless, and its slogan is "Albania is not for sale."</p>
+      <p class="tie"><b>Demands</b>Rama's resignation and a caretaker "technical" government.</p>
+    </article>
+  </div>
+</section>
+
+<section id="terms" aria-labelledby="terms-h">
+  <div class="sec-head col">
+    <span class="label">Key terms</span>
+    <h2 id="terms-h">Words you'll see in the coverage</h2>
+  </div>
+  <div class="gloss">
+    <details><summary>Strategic investor status</summary><p>A label from Albania's investment agency, AIDA, that fast-tracks permits and incentives for big projects. Critics say it is often used for projects on public or protected land with little scrutiny.</p></details>
+    <details><summary>Beneficial owner</summary><p>The real person who ultimately owns or controls a company, even if someone else's name is on the paperwork as the legal shareholder.</p></details>
+    <details><summary>Nominee or trust structure</summary><p>Putting a company in the name of a stand-in or a trust. It is legal in many places, but it can hide who really benefits.</p></details>
+    <details><summary>Special-purpose vehicle (SPV)</summary><p>A company set up to hold one deal or set of assets, often used by investors to ring-fence a project.</p></details>
+    <details><summary>PEP</summary><p>Politically exposed person: someone in a prominent public role. Banks screen PEPs more closely because of the corruption risk. It is a category, not an accusation.</p></details>
+    <details><summary>Vjosa-Narta protected landscape</summary><p>The coastal wetland and lagoon around Zvërnec. A 2024 legal change opened parts of it to development.</p></details>
+    <details><summary>SPAK</summary><p>Albania's special anti-corruption prosecutor, independent of the regular courts, created in the 2019 justice reform.</p></details>
+    <details><summary>Sayari</summary><p>A commercial database that links company registers, ownership filings and risk data from more than 250 jurisdictions. The money map on this site comes from it.</p></details>
+  </div>
+</section>
+
+<section id="unknowns" aria-labelledby="unk-h">
+  <div class="sec-head col">
+    <span class="label">Still unknown</span>
+    <h2 id="unk-h">What the records can't answer yet</h2>
+  </div>
+  <div class="callout col">
+    <ul class="plain">
+      <li>Which company actually holds the Sazan rights inside Albania? No Albanian company tied to Atlantic Incubation Partners appears in the records.</li>
+      <li>Are the three companies called Atlantic Incubation Partners (Delaware, Florida, Abu Dhabi) the same business? They share a name but no ID number.</li>
+      <li>Who is behind the Dutch trust structure BIRN describes for the Zvërnec company?</li>
+      <li>Are the Alkhayyat brothers the "two co-owners of Power International Holding" the government named? The records fit, but nothing links them directly.</li>
+      <li>Who drafted the 2024 protected-area amendment, and why? This is the core of SPAK's inquiry.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="sources" aria-labelledby="src-h">
+  <div class="sec-head col">
+    <span class="label">Sources</span>
+    <h2 id="src-h">Where everything comes from</h2>
+  </div>
+  <ol class="sources">
+    <li>Sayari Graph company and risk records (Delaware Secretary of State, USPTO, Abu Dhabi Global Market registry, Albania National Business Center, Acuris Risk Intelligence). Linked throughout.</li>
+    <li><a href="https://www.politico.eu/article/albanian-authorities-probe-seaside-resort-project-linked-to-jared-kushner">Politico Europe: Albanian authorities probe resort linked to Kushner</a></li>
+    <li><a href="https://www.france24.com/en/europe/20260604-what-we-know-about-jared-kushner-backed-luxury-resort-sparking-outrage-in-albania">France 24 / AFP: What we know about the resort</a></li>
+    <li><a href="https://www.aljazeera.com/news/2026/6/5/why-the-kushners-plan-to-build-an-albanian-resort-has-sparked-protests">Al Jazeera: Why the resort has provoked protests</a></li>
+    <li><a href="https://www.aljazeera.com/news/2026/10/20/horizontal-revolt-why-albanias-young-protesters-want-pm-rama-to-go">Al Jazeera: "Horizontal revolt"</a></li>
+    <li><a href="https://www.motherjones.com/politics/2026/06/jared-kushner-albanian-resort-corruption-probe-mass-protests-environmental-harms-albania-edi-rama">Mother Jones: Corruption probe and mass protests (cites BIRN)</a></li>
+    <li><a href="https://www.npr.org/2026/10/26/nx-s1-6016143/violent-anti-government-protests-rock-albania">NPR: Violent anti-government protests rock Albania</a></li>
+    <li><a href="https://www.democracynow.org/2026/10/21/albania_protests_edi_rama">Democracy Now: Flamingo Revolution</a></li>
+    <li><a href="https://china-cee.eu/wp-content/uploads/2026/03/2026er02_Albania.pdf">China-CEE Institute: Albania briefing (AIDA decision)</a></li>
+    <li><a href="https://reactionary.international/investigations/albania-is-not-for-sale/en">Reactionary International: Albania Is Not For Sale</a></li>
+    <li><a href="https://institutdelors.eu/en/publications/the-flamingo-movement-why-albania-needs-a-new-political-contract">Institut Jacques Delors: The Flamingo Movement</a></li>
+    <li><a href="https://en.wikipedia.org/wiki/Erion_Veliaj">Wikipedia: Erion Veliaj (with primary citations)</a></li>
+    <li><a href="https://2021-2025.state.gov/public-designation-of-albanian-sali-berisha-due-to-involvement-in-significant-corruption">US State Department: 2021 Berisha designation</a></li>
+    <li><a href="http://europeanwesternbalkans.com/2026/06/12/us-lifts-the-non-grata-designation-on-sali-berisha">European Western Balkans: US lifts Berisha designation</a></li>
+    <li><a href="https://www.novinite.com/articles/241378/Clashes+in+Albania:+Protesters+attack+the+Council+of+Ministers,+Edi+Rama+refuses+to+resign">Novinite: Protesters attack the Council of Ministers</a></li>
+    <li><a href="https://www.balkanweb.com/en/video-dosja-partizani-nen-akuze-per-korrupsion-sali-berisha-paraqitet-ne-spak-ne-zbatim-te-mases">BalkanWeb: Partizani file, Berisha appears at SPAK</a></li>
+  </ol>
+</section>
+
+<footer>
+  <span>Compiled from public registers and published reporting. Nothing here is a legal finding. Everyone named is presumed innocent unless a court rules otherwise.</span>
+  <span>Data retrieved 2 November 2026. Corporate records can lag behind real changes in ownership.</span>
+</footer>
+</div>
+
+<script>
+(function(){
+/* ---------- story stepper ---------- */
+var chapters=[
+  {t:"The place",h:"A protected coast with a military past",
+   b:"Sazan is an uninhabited island off Vlorë that served as a secret military base under communism. Across the bay, the Zvërnec coast sits inside the Vjosa-Narta protected landscape, a lagoon and wetland where flamingos, Mediterranean monk seals and sea turtles live.",
+   w:"Protected status is what kept developers out. Removing it is what made the resort possible."},
+  {t:"The deal",h:"A fast-track for a Kushner-linked company",
+   b:"In 2024 Albania changed the law, opening parts of the protected area to development. In December 2024 its investment agency gave \"strategic investor\" status to Atlantic Incubation Partners, a company linked to Jared Kushner's Affinity Partners, for a resort on Sazan. Reports say this came without a business plan. Preliminary approval followed in January 2025, days before Donald Trump's second inauguration. The coastal Zvërnec project is separate, and the government names Qatari investors behind it.",
+   w:"Critics ask whether a small country fast-tracked a deal to win favour with a new US administration. Kushner and the government deny any such influence."},
+  {t:"The money trail",h:"What the company registers show",
+   b:"Company records show Kushner as a director of an Abu Dhabi holding company, co-owned with the Emirati developer Eagle Hills. On the coast, Albania's own register lists two Alkhayyat brothers as the real owners of Albania Land Development, a Vlorë land company. A different, local person is named as its shareholder. Investigative reporters describe a wider network of middlemen, including people linked to the oligarch Shefqet Kastrati.",
+   w:"When the legal owner and the real owner are different people, it is harder for the public to see who profits. Use the money map below to explore."},
+  {t:"The investigation",h:"Prosecutors step in",
+   b:"On 1 June 2026, SPAK, Albania's independent anti-corruption prosecutor, opened an investigation. It is examining the 2024 change to the area's protected status, contracts awarded without public tenders, and where the money to buy land came from. Reports say the land company's bank accounts were frozen. No one has been charged in this case.",
+   w:"An investigation is not a verdict. But it means the questions protesters raise are being taken seriously by the country's most trusted institution."},
+  {t:"The uprising",h:"From a beach fence to a national revolt",
+   b:"In May 2026, fences went up on the Zvërnec beach and locals protested. The Flamingo movement grew from there, under the slogan \"Albania is not for sale\". In mid-October students joined, angry about tuition, jobs and corruption. Protests in Tirana have turned violent, with hundreds hurt or arrested. Edi Rama, in power for 13 years, refuses to resign.",
+   w:"The resort became a symbol of a bigger complaint: that the country's land and future are being traded away by a small, connected elite."}
+];
+var stepsEl=document.getElementById('steps'),pane=document.getElementById('pane'),cur=0;
+chapters.forEach(function(c,i){
+  var b=document.createElement('button');b.type='button';b.id='step-'+i;b.setAttribute('role','tab');
+  b.setAttribute('aria-controls','pane');b.innerHTML='<span class="n">0'+(i+1)+'</span><span class="t">'+c.t+'</span>';
+  b.addEventListener('click',function(){show(i)});
+  b.addEventListener('keydown',function(e){if(e.key==='ArrowDown'||e.key==='ArrowRight'){e.preventDefault();show(Math.min(i+1,4),true)}if(e.key==='ArrowUp'||e.key==='ArrowLeft'){e.preventDefault();show(Math.max(i-1,0),true)}});
+  stepsEl.appendChild(b);
+});
+function show(i,focus){
+  cur=i;var c=chapters[i];
+  stepsEl.querySelectorAll('button').forEach(function(b,j){b.setAttribute('aria-selected',String(j===i));b.tabIndex=j===i?0:-1});
+  if(focus)stepsEl.children[i].focus();
+  pane.setAttribute('aria-labelledby','step-'+i);
+  pane.innerHTML='<span class="label">Step '+(i+1)+' of 5 · '+c.t+'</span><h3>'+c.h+'</h3><p>'+c.b+'</p>'+
+   '<div class="why"><span class="label">Why it matters</span><span>'+c.w+'</span></div>'+
+   '<div class="ctrl"><button type="button" class="btn ghost" id="prev"'+(i===0?' disabled':'')+'>Previous</button>'+
+   (i<4?'<button type="button" class="btn" id="next">Next: '+chapters[i+1].t+'</button>':'<a class="btn" href="#map" style="text-decoration:none">Explore the money map</a>')+'</div>';
+  var p=document.getElementById('prev'),n=document.getElementById('next');
+  if(p)p.onclick=function(){show(cur-1)};if(n)n.onclick=function(){show(cur+1)};
+}
+show(0);
+
+/* ---------- network ---------- */
+var S="https://graph.sayari.com/resource/entity/";
+var N=[
+ {id:"kushner",x:110,y:60,k:"person",l:["Jared Kushner"],s:"Affinity Partners",
+  what:"US investor and Donald Trump's son-in-law. His firm Affinity Partners is behind the Albania resort plans.",
+  facts:[["Role in records","Director of Atlantic Eagle Dhabi Partners Holding (Abu Dhabi)"]],url:S+"AcRddw24EjmWs7m3CDZmzg"},
+ {id:"alabbar",x:320,y:60,k:"person",l:["Mohamed Alabbar"],s:"Eagle Hills founder",
+  what:"Emirati property developer. His company Eagle Hills also has a deal to redevelop Albania's Durrës port.",
+  facts:[["Role in records","Director of Atlantic Eagle Dhabi Partners Holding"]],url:S+"gdKlzPqoO5Fxm3VvsaehLA"},
+ {id:"spak",x:560,y:60,k:"probe",l:["SPAK"],s:"anti-corruption prosecutor",
+  what:"Albania's independent anti-corruption prosecutor. It opened an investigation on 1 June 2026.",
+  facts:[["Examining","The 2024 law change, contracts awarded without tenders, the source of land money"]]},
+ {id:"kastrati",x:790,y:60,k:"co",l:["Kastrati Group"],s:"Shefqet Kastrati, 100%",
+  what:"The business group of oligarch Shefqet Kastrati. A new Kastrati Group company was registered in December 2024.",
+  facts:[["NIPT","M42419029G"],["Registered","17 Dec 2024"]],url:S+"-EHllki7KxGtru87kLTE9w"},
+ {id:"aedp",x:215,y:190,k:"co",l:["Atlantic Eagle Dhabi","Partners Holding"],s:"Abu Dhabi · SPV",
+  what:"A holding company set up in Abu Dhabi in October 2024 that joins Kushner's and Alabbar's sides. It is a special-purpose vehicle that can hold shares, property and intellectual property.",
+  facts:[["Reg. no.","ADGM 21425"],["Incorporated","21 Oct 2024"],["Watchlist check","No sanctioned or PEP links found"]],url:S+"RZ7g9NSkBy-l80zHTkGfig"},
+ {id:"gov",x:560,y:190,k:"gov",l:["Albanian government"],s:"PM Edi Rama · AIDA",
+  what:"Rama's government changed the protected-area law in 2024 and gave the Sazan project fast-track \"strategic investor\" status.",
+  facts:[["In power","Since 2013"],["Personal business tie to project","None found in Sayari"]],url:S+"vWWLbWhxqimRHtU0d1txYA"},
+ {id:"pih",x:790,y:190,k:"co",l:["Power International","Holding"],s:"Qatar",
+  what:"A Qatari holding group. The government says its two co-owners are the investors behind Zvërnec.",
+  facts:[["Source","Government statement to AFP, June 2026"]]},
+ {id:"aipuae",x:110,y:320,k:"co",l:["Atlantic Incubation","Partners (UAE)"],s:"Abu Dhabi",
+  what:"The Abu Dhabi-registered company with this name. It is a shareholder in the Kushner–Alabbar holding.",
+  facts:[["Register","Abu Dhabi Global Market"]],url:S+"G1e7j8lnrhIOuKvDF_TVpw"},
+ {id:"eh",x:320,y:320,k:"co",l:["Eagle Hills Skyline","Investment Holdings"],s:"Abu Dhabi",
+  what:"Part of Alabbar's Eagle Hills group. It is the other shareholder in the Kushner–Alabbar holding.",
+  facts:[["Register","Abu Dhabi Global Market"]],url:S+"fBvUy8NO4lIOnRPqH9LsCw"},
+ {id:"zvernec",x:560,y:320,k:"place",l:["Zvërnec coast project"],s:"~€4bn · protected wetland",
+  what:"A resort planned on the coastal strip between the Narta Lagoon and the sea, inside the Vjosa-Narta protected landscape. Fences here sparked the first protests.",
+  facts:[["Scale","PM cited about €4bn"],["Status","Under SPAK investigation"]]},
+ {id:"ald",x:790,y:320,k:"co",l:["Albania Land","Development"],s:"Vlorë land company",
+  what:"A Vlorë company registered in May 2025. Reports say prosecutors froze its bank accounts over allegedly fraudulent land titles. Its legal shareholder (a local administrator) is not the same as its real owners.",
+  facts:[["NIPT","M56727208I"],["Registered","21 May 2025"]],url:S+"a8Qnvpj7gk9b6N462g47_Q"},
+ {id:"aipus",x:110,y:450,k:"co",l:["Atlantic Incubation","Partners (USA)"],s:"Delaware / Florida",
+  what:"The US company that received \"strategic investor\" status. It also filed a US trademark application for the name \"SAZAN\".",
+  facts:[["Delaware file","7390750 (reg. 5 Apr 2023)"],["Trademark","“SAZAN”, serial 98822950"]],url:S+"KKTy-M_ZoP_ByDsHe_xxqA"},
+ {id:"affinity",x:320,y:450,k:"co",l:["Affinity Partners"],s:"Kushner's investment firm",
+  what:"Kushner's Miami-based private equity fund, backed by Saudi Arabia and other foreign investors. Press reports tie the Atlantic Incubation Partners companies to it.",
+  facts:[["Source","Press reports; not resolved to one register record"]]},
+ {id:"sazan",x:560,y:450,k:"place",l:["Sazan Island resort"],s:"~$1.4bn · ex-military island",
+  what:"A luxury resort planned on the uninhabited former military island, with about 10,000 hotel rooms and villas across both sites.",
+  facts:[["Approval","Preliminary, January 2025"]]},
+ {id:"alk",x:790,y:450,k:"person",l:["Alkhayyat brothers"],s:"50% + 50%",
+  what:"Ramez and Mohamadmoataz Alkhayyat, listed in Albania's register as the real owners of Albania Land Development. They have ties to Albania and Qatar.",
+  facts:[["Other holdings in Sayari","None found"]],url:S+"o9tBo64s3nO-MEc3IfIGig"}
+];
+var E=[
+ ["kushner","aedp","reg","Director of"],
+ ["alabbar","aedp","reg","Director of"],
+ ["aipuae","aedp","reg","Shareholder of"],
+ ["eh","aedp","reg","Shareholder of"],
+ ["alabbar","eh","press","Founder of the Eagle Hills group"],
+ ["aipuae","aipus","alleg","Same name, but no shared ID. Not confirmed to be the same company"],
+ ["affinity","aipus","press","Reported to be affiliated"],
+ ["kushner","affinity","press","Founder and head"],
+ ["aipus","sazan","reg","Filed the “SAZAN” trademark and holds strategic-investor status"],
+ ["gov","sazan","press","Granted strategic-investor status (Dec 2024)"],
+ ["gov","zvernec","press","2024 law change opened the protected area"],
+ ["spak","gov","alleg","Investigating the law change and contracts awarded without tenders"],
+ ["spak","ald","alleg","Accounts reportedly frozen (single source)"],
+ ["alk","ald","reg","Beneficial owners, 50% each"],
+ ["pih","zvernec","press","Named by the government as the Zvërnec investors"],
+ ["pih","alk","alleg","Government's description fits, but no record links them"],
+ ["ald","zvernec","alleg","Land titles in the area under investigation"],
+ ["kastrati","zvernec","alleg","Alleged role in the land deals (BIRN, court documents)"]
+];
+var KIND={reg:"Registry record",press:"Press report",alleg:"Allegation / unconfirmed"};
+var svg=document.getElementById('graph'),NS="http://www.w3.org/2000/svg",W=170,H=56,byId={};
+N.forEach(function(n){byId[n.id]=n});
+function el(t,a){var e=document.createElementNS(NS,t);for(var k in a)e.setAttribute(k,a[k]);return e}
+var gE=el('g',{}),gN=el('g',{});svg.appendChild(gE);svg.appendChild(gN);
+E.forEach(function(e,i){
+  var a=byId[e[0]],b=byId[e[1]];
+  var mx=(a.x+b.x)/2,my=(a.y+b.y)/2,curve=(a.x===b.x||a.y===b.y)?0:18;
+  var p=el('path',{d:'M'+a.x+' '+a.y+' Q'+(mx+curve)+' '+(my-curve)+' '+b.x+' '+b.y,'class':'edge '+e[2]});
+  p.dataset.i=i;gE.appendChild(p);e.p=p;
+});
+N.forEach(function(n){
+  var g=el('g',{'class':'node k-'+n.k,tabindex:'0',role:'button','aria-label':n.l.join(' ')+', '+n.s});
+  g.appendChild(el('rect',{x:n.x-W/2,y:n.y-H/2,width:W,height:H,rx:n.k==='person'?26:4}));
+  var lines=n.l.length,top=n.y-(lines===2?10:4);
+  n.l.forEach(function(t,j){var tx=el('text',{x:n.x,y:top+j*15});tx.textContent=t;g.appendChild(tx)});
+  var s=el('text',{x:n.x,y:top+lines*15+1,'class':'sub'});s.textContent=n.s;g.appendChild(s);
+  g.addEventListener('click',function(ev){ev.stopPropagation();select(n.id)});
+  g.addEventListener('keydown',function(ev){if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();select(n.id)}});
+  gN.appendChild(g);n.g=g;
+});
+svg.addEventListener('click',function(){select(null)});
+var panel=document.getElementById('panel');
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function select(id){
+  var linked={};
+  E.forEach(function(e){var on=id&&(e[0]===id||e[1]===id);e.p.classList.toggle('dim',!!id&&!on);e.p.classList.toggle('lit',!!on);if(on){linked[e[0]]=1;linked[e[1]]=1}});
+  N.forEach(function(n){n.g.classList.toggle('sel',n.id===id);n.g.classList.toggle('dim',!!id&&!linked[n.id]&&n.id!==id)});
+  if(!id){
+    panel.innerHTML='<span class="label">How to use the map</span><h3>Pick a box to start</h3><p class="what">The left side is the Kushner and Alabbar company chain. The right side is the Zvërnec land company and its owners. In the middle are the government, the prosecutors and the two resort sites.</p><p class="what muted">Good first click: <button type="button" class="btn ghost" id="start-aedp" style="padding:4px 10px">Atlantic Eagle Dhabi</button></p>';
+    var st=document.getElementById('start-aedp');if(st)st.onclick=function(ev){ev.stopPropagation();select('aedp')};
+    return;
+  }
+  var n=byId[id],h='<span class="label">'+({person:"Person",co:"Company",gov:"Government",place:"Project site",probe:"Investigator"})[n.k]+'</span><h3>'+esc(n.l.join(' '))+'</h3><p class="what">'+esc(n.what)+'</p>';
+  if(n.facts&&n.facts.length){h+='<dl>';n.facts.forEach(function(f){h+='<div><dt>'+esc(f[0])+'</dt><dd>'+esc(f[1])+'</dd></div>'});h+='</dl>'}
+  h+='<span class="label">Connections</span><ul>';
+  E.forEach(function(e){if(e[0]!==id&&e[1]!==id)return;var o=e[0]===id?e[1]:e[0],on=byId[o];
+    h+='<li><button type="button" data-go="'+o+'">'+esc(on.l.join(' '))+'</button><span>'+esc(e[3])+'</span><span><span class="tag t-'+e[2]+'">'+KIND[e[2]]+'</span></span></li>'});
+  h+='</ul>';
+  if(n.url)h+='<a href="'+n.url+'" target="_blank" rel="noopener">View the record on Sayari Graph ↗</a>';
+  panel.innerHTML=h;
+  panel.querySelectorAll('[data-go]').forEach(function(b){b.onclick=function(ev){ev.stopPropagation();select(b.dataset.go)}});
+}
+select(null);
+
+/* ---------- timeline filter ---------- */
+var fb=document.querySelectorAll('.filters button'),items=document.querySelectorAll('#tl li');
+function filt(f){fb.forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.f===f))});items.forEach(function(li){li.hidden=!(f==='all'||li.dataset.k===f)});try{localStorage.setItem('sazan-filter',f)}catch(e){}}
+fb.forEach(function(b){b.addEventListener('click',function(){filt(b.dataset.f)})});
+var sv='all';try{sv=localStorage.getItem('sazan-filter')||'all'}catch(e){}filt(sv);
+
+/* ---------- nav highlight ---------- */
+var links=document.querySelectorAll('nav.top a[href^="#"]:not(.brand)');
+if('IntersectionObserver' in window){
+  var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id)})}})},{rootMargin:'-40% 0px -55% 0px'});
+  links.forEach(function(a){var t=document.querySelector(a.getAttribute('href'));if(t)io.observe(t)});
+}
+})();
+</script>
+</body>
+</html>
