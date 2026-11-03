@@ -1,0 +1,33 @@
+/* BEYOND THE BRAND — glossary. Keys are referenced by data-term="..." in the pages. */
+window.BTB = window.BTB || {};
+BTB.GLOSSARY = {
+  "beneficial-owner":["Beneficial owner","The real person who ultimately owns or controls a company, even when someone else's name is on the paperwork as legal shareholder."],
+  "nominee":["Nominee shareholder","A person registered as owner on behalf of someone else. Legal in many places, but it can hide who really benefits."],
+  "spv":["Special-purpose vehicle (SPV)","A company created to hold one deal or set of assets, often to ring-fence a project."],
+  "strategic-investor":["Strategic investor status","An Albanian fast-track for large projects, granted by the investment agency AIDA, that speeds up permits and incentives."],
+  "pep":["Politically exposed person (PEP)","Someone in a prominent public role, screened more closely for corruption risk. A category, not an accusation."],
+  "spak":["SPAK","Albania's Special Structure Against Corruption and Organised Crime: an independent prosecutor created by the 2019 justice reform."],
+  "aida":["AIDA","Albanian Investment Development Agency, which grants strategic-investor status."],
+  "hs-code":["HS code","The Harmonized System number customs authorities use to classify goods. 2610 is chromium ore; 6403 is leather-upper shoes; 6109 is T-shirts."],
+  "fason":["Fason","Albanian term for cut-make-trim subcontracting: workshops that sew garments and shoe uppers to order for foreign brands."],
+  "ferrochrome":["Ferrochrome","An alloy of chromium and iron made by smelting chrome ore. It is the main ingredient that makes steel stainless."],
+  "mass-balance":["Mass balance","A traceability method that tracks quantities of certified material in and out of a process, rather than each physical unit."],
+  "due-diligence":["Due diligence","The process of identifying, preventing and addressing human-rights and environmental harms in a company's operations and value chain."],
+  "csrd":["CSRD","EU Corporate Sustainability Reporting Directive: requires large companies to report sustainability risks and impacts."],
+  "csddd":["CSDDD","EU Corporate Sustainability Due Diligence Directive: requires large companies to identify and address harms in their value chains."],
+  "flr":["EU Forced Labour Regulation","Bans products made with forced labour from the EU market, applying from 14 December 2027."],
+  "dpp":["Digital Product Passport","A structured data record attached to a product, under the EU Ecodesign Regulation, carrying information such as origin, materials and repairability."],
+  "vc":["Verifiable credential","A digitally signed claim, such as \"this company is owned 50% by X\", that anyone can check cryptographically without contacting the issuer."],
+  "did":["Decentralised identifier (DID)","A globally unique identifier that its holder controls, used to anchor verifiable credentials."],
+  "lei":["LEI / vLEI","The Legal Entity Identifier is a global 20-character company ID. The vLEI is its verifiable-credential form."],
+  "zkp":["Zero-knowledge proof","A cryptographic method to prove a statement is true, such as \"all wages are above the minimum\", without revealing the underlying data."],
+  "oracle":["Oracle problem","A blockchain can't know whether the data entered into it is true. If the first entry is false, the ledger preserves the falsehood."],
+  "remote-sensing":["Remote sensing","Gathering information about the Earth's surface from satellites or aircraft, such as land-cover change."],
+  "entity-resolution":["Entity resolution","Deciding whether records in different databases refer to the same person or company."],
+  "psa":["\"Possibly the same as\" (PSA)","Sayari's label for records that match closely but lack enough shared identifiers to be confirmed as the same entity."],
+  "country-risk":["Country risk","Risks a buyer takes on simply by operating in or sourcing from a place, such as corruption, weak labour enforcement or opaque ownership."],
+  "accession":["EU accession","The process of joining the EU. Candidates must align their laws chapter by chapter; Chapter 27 covers the environment."],
+  "cpi":["Corruption Perceptions Index (CPI)","Transparency International's annual 0–100 ranking of perceived public-sector corruption; lower is more corrupt."],
+  "epcis":["EPCIS","A GS1 standard for sharing supply-chain events (what, when, where, why) between companies."],
+  "iot":["IoT","Internet of Things: networked sensors such as GPS trackers, scales or meters that record physical events automatically."]
+};
