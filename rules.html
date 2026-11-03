@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The rules · The Sazan File</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-page="rules">
+<nav class="top" aria-label="Chapters"><div class="in">
+  <a class="brand" href="index.html">The Sazan File</a>
+  <a href="index.html" data-p="home">How it's tied</a>
+  <a href="timeline.html" data-p="timeline">1 · Timeline</a>
+  <a href="land.html" data-p="land">2 · The land deal</a>
+  <a href="goods.html" data-p="goods">3 · The goods</a>
+  <a href="verify.html" data-p="verify">4 · Verify it</a>
+  <a href="rules.html" data-p="rules">5 · The rules</a>
+  <a href="research.html" data-p="research">6 · Research kit</a>
+</div></nav>
+
+<div class="wrap">
+<header class="page">
+  <span class="chapter">Chapter 5 of 6</span>
+  <h1>The rules<span>.</span></h1>
+  <p class="lede">Technology alone won't fix this. What forces anyone to look is law. Rules are moving from "please report" to "you must check, and your goods can be stopped at the border". But each rule reaches a different part of this case.</p>
+  <div class="tie-strip">Ties shown here: <a href="index.html#tied">Accession lever</a><a href="index.html#tied">Buyer duties</a></div>
+</header>
+
+<section aria-labelledby="ladder-h">
+  <div class="sec-head col"><span class="label">Voluntary → mandatory</span><h2 id="ladder-h">Five levels of pressure</h2></div>
+  <div class="ladder">
+    <div class="rung"><span class="lvl">Level 1 · voluntary</span><div class="meter" aria-hidden="true"><i style="width:20%"></i></div><h3>Guidelines</h3><span class="ex">UN Guiding Principles on Business and Human Rights (2011); OECD Guidelines for Multinational Enterprises (updated 2023)</span></div>
+    <div class="rung"><span class="lvl">Level 2 · disclose</span><div class="meter" aria-hidden="true"><i style="width:40%"></i></div><h3>Reporting</h3><span class="ex">EU Corporate Sustainability Reporting Directive (CSRD, in force 2023)</span></div>
+    <div class="rung"><span class="lvl">Level 3 · duty of care</span><div class="meter" aria-hidden="true"><i style="width:65%"></i></div><h3>Due diligence</h3><span class="ex">German Supply Chain Act (2023); EU CSDDD (in force 2024, later delayed and narrowed by the 2025 "Omnibus" package; check current status)</span></div>
+    <div class="rung"><span class="lvl">Level 4 · border</span><div class="meter" aria-hidden="true"><i style="width:85%"></i></div><h3>Import bans</h3><span class="ex">US Uyghur Forced Labor Prevention Act (2022); EU Forced Labour Regulation (applies from December 2027)</span></div>
+    <div class="rung"><span class="lvl">Level 5 · product</span><div class="meter" aria-hidden="true"><i style="width:100%"></i></div><h3>Product data</h3><span class="ex">EU Ecodesign Regulation (2024) and Digital Product Passports, due for textiles and footwear</span></div>
+  </div>
+</section>
+
+<section id="matrix" aria-labelledby="matrix-h">
+  <div class="sec-head col">
+    <span class="label">Interactive · click a cell</span>
+    <h2 id="matrix-h">Which rule reaches which part of the case?</h2>
+    <p>Rows are the three parts of the case; columns are the levers. Click any cell to see why.</p>
+  </div>
+  <div class="keyrow">
+    <span class="lv y"><i></i>Applies</span><span class="lv p"><i></i>Partly or only if…</span><span class="lv n"><i></i>Doesn't reach it</span>
+  </div>
+  <div class="matrix"><table id="mx"></table></div>
+  <div class="panel" id="mxpanel" aria-live="polite"></div>
+  <p class="col small muted">This is a simplified teaching summary, not legal advice. Scope thresholds and start dates for the EU rules have changed since 2024, so check the current text before you rely on them.</p>
+</section>
+
+<section aria-labelledby="lesson">
+  <div class="sec-head col"><span class="label">The lesson</span><h2 id="lesson">What this says about system change</h2></div>
+  <div class="grid3">
+    <div><span class="label">Supply-chain laws</span><span>These reach the brands buying Albanian shoes and chrome, but not the resort investors, who sell no goods into Europe.</span></div>
+    <div><span class="label">Accession</span><span>EU membership talks reach the Albanian government itself, which is why the resort was paused only after Brussels and protesters both pushed.</span></div>
+    <div><span class="label">Public pressure</span><span>The protests did what no rule had done: work at Zvërnec stopped in June 2026. Voluntary, mandatory and grassroots pressure work together.</span></div>
+  </div>
+</section>
+
+<nav class="next" aria-label="Chapter navigation">
+  <a href="verify.html"><span class="label">← Back</span><b>Chapter 4 · Verify it</b></a>
+  <a class="fwd" href="research.html"><span class="label">Next →</span><b>Chapter 6 · Research kit</b></a>
+</nav>
+<footer><span>A teaching summary, not legal advice. · <a href="research.html#sources">All sources</a></span></footer>
+</div>
+
+<script src="assets/site.js"></script>
+<script>
+(function(){
+var esc=SF.esc;
+var COLS=["Voluntary guidelines","Reporting (CSRD)","Due diligence (CSDDD)","Import bans","EU accession"];
+var LV={y:"Applies",p:"Partly",n:"Doesn't reach it"};
+var ROWS=[
+ {t:"The land deal",c:[
+  ["p","In principle","The UN and OECD expect investors to respect human rights and the environment, but nothing enforces it."],
+  ["n","Unlikely","The investors are private funds based outside the EU, so EU sustainability reporting is unlikely to cover this project."],
+  ["n","Unlikely","Due-diligence laws cover a company's supply chain. A resort developer selling no goods into the EU is unlikely to be in scope."],
+  ["n","No goods","Import bans stop goods at the border. A resort isn't imported."],
+  ["y","Strongest lever","The European Commission warned the works could block the environment chapter (Chapter 27). The European Parliament wants the 2024 law repealed by the end of 2026."]]},
+ {t:"Chrome",c:[
+  ["p","Voluntary guidance","The OECD's minerals due-diligence guidance can be applied to chrome, but it's voluntary."],
+  ["p","If the buyer is large and EU-based","A large European steelmaker would have to report risks in its raw-material supply, including union-rights issues upstream."],
+  ["y","For large EU buyers","Large EU buyers would have to identify and address labour harms such as union-busting at the mines, even several steps back."],
+  ["p","Only if forced labour is shown","Low pay and union disputes alone don't trigger a ban under the EU Forced Labour Regulation."],
+  ["p","Indirectly","Accession requires Albania to align its labour laws with EU standards (social policy and employment chapter)."]]},
+ {t:"Shoes & clothes",c:[
+  ["p","Brand codes of conduct","Brands like Inditex have supplier codes and audits, but these are self-policed."],
+  ["y","Inditex must report","Inditex is a large EU group, so it must report supply-chain risks under the CSRD."],
+  ["y","Inditex is in scope","Under the CSDDD, Inditex would have to find and address underpayment at Albanian suppliers. Its start date has been delayed."],
+  ["p","Only if forced labour is shown","Underpayment is a serious violation, but not forced labour unless coercion is shown."],
+  ["p","Indirectly","EU alignment should raise labour-inspection standards in Albania over time."]]}
+];
+var mx=document.getElementById('mx'),mp=document.getElementById('mxpanel');
+var h='<tr><th></th>'+COLS.map(function(c){return'<th scope="col">'+esc(c)+'</th>'}).join('')+'</tr>';
+ROWS.forEach(function(r,i){h+='<tr><th scope="row" class="row">'+esc(r.t)+'</th>';r.c.forEach(function(c,j){h+='<td><button type="button" class="cellbtn" id="c'+i+'-'+j+'" data-i="'+i+'" data-j="'+j+'" aria-pressed="false"><span class="lv '+c[0]+'"><i></i>'+LV[c[0]]+'</span><span class="small muted">'+esc(c[1])+'</span></button></td>'});h+='</tr>'});
+mx.innerHTML=h;
+function pick(i,j){mx.querySelectorAll('.cellbtn').forEach(function(b){b.setAttribute('aria-pressed',String(+b.dataset.i===i&&+b.dataset.j===j))});
+  var c=ROWS[i].c[j];mp.innerHTML='<span class="label">'+esc(ROWS[i].t)+' × '+esc(COLS[j])+'</span><h3><span class="lv '+c[0]+'"><i></i>'+LV[c[0]]+'</span> · '+esc(c[1])+'</h3><p>'+esc(c[2])+'</p>'}
+mx.querySelectorAll('.cellbtn').forEach(function(b){b.onclick=function(){pick(+b.dataset.i,+b.dataset.j)}});
+pick(0,4);
+})();
+</script>
+</body>
+</html>

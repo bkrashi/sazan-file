@@ -1,26 +1,25 @@
 # The Sazan File
 
-An interactive, plain-language guide to the Kushner-linked Sazan Island and Zvërnec resort projects in Albania, the company records behind them, and the Flamingo protest movement.
+An interactive, multi-page case study for an ethical-sourcing course. It shows how Albania's Kushner-linked Sazan/Zvërnec resort deal, its chrome mines, its shoe and garment factories and its protest movement are tied together, and what evidence and technology could verify each claim.
 
-The whole site is one file, `index.html`, with no build step.
+Plain HTML, CSS and JavaScript with no build step.
 
-## What's inside
+## Pages
 
-- **The story in five steps:** a walkthrough from the protected coast to the current protests.
-- **Money map:** an interactive network of people, companies and institutions. Click a box for an explanation and its connections.
-- **Timeline:** filter by registry records, press reports or allegations.
-- **Who's who, key terms, open questions, sources.**
+| Page | What's on it |
+|---|---|
+| `index.html` | How it's all tied (interactive diagram), map of Albania, four key numbers |
+| `timeline.html` | Ten-year chronology in four storylines, with Play |
+| `land.html` | The deal in five moves, "peel the onion" ownership layers, money map |
+| `goods.html` | Trace a pan, shoes and a T-shirt; pay vs rent; export charts |
+| `verify.html` | "You're the investigator" quiz and the emerging-tech toolkit |
+| `rules.html` | Voluntary → mandatory ladder and a clickable rules matrix |
+| `research.html` | Checklist, class questions, who's who, key terms, sources |
+
+Shared styles and helpers are in `assets/`.
 
 ## Evidence standard
 
-Every claim is tagged as a registry record (from official registers, via Sayari), a press report (from a named outlet) or an allegation (under investigation or disputed). Nothing on the site is a legal finding. Everyone named is presumed innocent unless a court rules otherwise.
+Every claim is tagged as an official record, a press/NGO report, or an allegation. Nothing on the site is a legal finding. Everyone named is presumed innocent unless a court rules otherwise. Customs-record buyer names show trade, not wrongdoing.
 
 Data retrieved 2 November 2026.
-
-## View it locally
-
-Open `index.html` in any browser.
-
-## Publish with GitHub Pages
-
-In the repository: **Settings → Pages → Build and deployment → Deploy from a branch → `main` / root**. The site appears at `https://<your-username>.github.io/<repo-name>/`.

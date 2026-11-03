@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Verify it · The Sazan File</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-page="verify">
+<nav class="top" aria-label="Chapters"><div class="in">
+  <a class="brand" href="index.html">The Sazan File</a>
+  <a href="index.html" data-p="home">How it's tied</a>
+  <a href="timeline.html" data-p="timeline">1 · Timeline</a>
+  <a href="land.html" data-p="land">2 · The land deal</a>
+  <a href="goods.html" data-p="goods">3 · The goods</a>
+  <a href="verify.html" data-p="verify">4 · Verify it</a>
+  <a href="rules.html" data-p="rules">5 · The rules</a>
+  <a href="research.html" data-p="research">6 · Research kit</a>
+</div></nav>
+
+<div class="wrap">
+<header class="page">
+  <span class="chapter">Chapter 4 of 6</span>
+  <h1>Verify it<span>.</span></h1>
+  <p class="lede">The course's central question: what evidence actually proves a claim, without creating new harm? The same tools work for the land deal and the supply chains, because the problem is the same: a claim on paper versus what really happened.</p>
+  <div class="tie-strip">Ties shown here: <a href="index.html#tied">Hidden owners</a><a href="index.html#tied">Fast-track power</a><a href="index.html#tied">Wages not enforced</a></div>
+</header>
+
+<section id="quiz" aria-labelledby="quiz-h">
+  <div class="sec-head col">
+    <span class="label">Interactive · you're the investigator</span>
+    <h2 id="quiz-h">Pick the evidence that would prove it</h2>
+    <p>Five real claims from this case. For each one, choose the evidence that would actually stand up. There's an explanation after every answer.</p>
+  </div>
+  <div class="quiz" id="qz" aria-live="polite"></div>
+</section>
+
+<section id="toolkit" aria-labelledby="kit-h">
+  <div class="sec-head col">
+    <span class="label">Emerging tech · could it prove this?</span>
+    <h2 id="kit-h">The toolkit</h2>
+    <p>Pick a problem. Each shows the course technology, what it could prove here, and where it falls short or backfires.</p>
+  </div>
+  <div class="kit">
+    <div class="list" role="tablist" aria-label="Problems" id="kitlist"></div>
+    <div class="body" role="tabpanel" id="kitbody" aria-live="polite"></div>
+  </div>
+</section>
+
+<nav class="next" aria-label="Chapter navigation">
+  <a href="goods.html"><span class="label">← Back</span><b>Chapter 3 · The goods</b></a>
+  <a class="fwd" href="rules.html"><span class="label">Next →</span><b>Chapter 5 · The rules</b></a>
+</nav>
+<footer><span>Nothing here is a legal finding. · <a href="research.html#sources">All sources</a></span></footer>
+</div>
+
+<script src="assets/site.js"></script>
+<script>
+(function(){
+var esc=SF.esc;
+/* ---------- quiz ---------- */
+var Q=[
+ {c:"\"The Zvërnec wetland was cleared before any permit was issued.\"",o:[
+   ["A government statement saying the land is private property",0,"A claim, not evidence. Who owns the land says nothing about whether clearing was permitted."],
+   ["Before-and-after satellite images, plus a check of the public permit register",1,"Imagery dates the clearing; the permit register, or the absence of a published permit, shows whether it was allowed. Wetlands International has done the first half."],
+   ["A blockchain record of the land sale",0,"It would timestamp a sale, but it says nothing about bulldozers or permits."]]},
+ {c:"\"Jared Kushner controls the company that holds the Sazan rights.\"",o:[
+   ["The Abu Dhabi register listing him as a director of Atlantic Eagle Dhabi Partners Holding",0,"Close, but no record yet links that Abu Dhabi company to rights in Albania. It proves a directorship, not control of Sazan."],
+   ["News headlines calling it \"Kushner's resort\"",0,"Headlines summarise; they aren't records. Many outlets repeat each other."],
+   ["A chain of registry records from the Albanian rights-holder up to a company he directs",1,"Only an unbroken chain proves control. Today that chain has a missing link, so this claim can't yet be fully verified."]]},
+ {c:"\"Workers at an Albanian shoe supplier are paid at least the minimum wage.\"",o:[
+   ["The brand's annual sustainability report",0,"Self-reported, and usually aggregated across thousands of suppliers."],
+   ["Payroll checked with a zero-knowledge proof, plus anonymous worker interviews",1,"The proof checks the books without exposing anyone's pay; interviews catch what isn't in the books, like unpaid overtime or cash work."],
+   ["The factory's quality-management certificate",0,"It certifies production processes, not pay."]]},
+ {c:"\"The chrome in this steel came from Bulqiza.\"",o:[
+   ["A bill of lading for a shipment from an Albanian port",0,"It shows the exporter and port, but not the mine, and the ore may have been blended by a trader on the way."],
+   ["Weighbridge and GPS data from the mine gate, linked to a mass-balance record through to the smelter",1,"This ties loads to a mine and tracks quantities through mixing. It's the realistic standard for minerals."],
+   ["Albania's corruption score",0,"Country risk tells you how careful to be, not where a specific load came from."]]},
+ {c:"\"These two companies called Atlantic Incubation Partners are the same company.\"",o:[
+   ["They have the same name",0,"Thousands of companies share names. This site keeps the three apart for exactly this reason."],
+   ["An AI screening tool flags them as \"possibly the same as\" each other",0,"A fuzzy match is a lead, not a fact. Treating it as proof can wrongly link people to risk."],
+   ["A shared registration number, LEI, director or address in official records",1,"Matching identifiers across official records is how entity resolution should be confirmed."]]}
+];
+var qz=document.getElementById('qz'),qi=0,res=[],picked=null;
+function draw(){
+  if(qi>=Q.length){var sc=res.filter(Boolean).length;
+    qz.innerHTML='<div class="qtop"><span class="label">Result</span>'+dots()+'</div><p class="claim">You picked the strongest evidence '+sc+' of '+Q.length+' times.</p><p>The pattern: <strong>claims are cheap, records are better, and the best proof combines an independent record with a check on the ground</strong>. Technology helps most when it makes records harder to fake and easier to check. It can\'t replace asking the people involved.</p><div class="chips"><button type="button" class="btn" id="again">Try again</button><a class="btn ghost" href="#toolkit">Explore the toolkit</a></div>';
+    document.getElementById('again').onclick=function(){qi=0;res=[];picked=null;draw()};return}
+  var q=Q[qi];
+  var h='<div class="qtop"><span class="label">Claim '+(qi+1)+' of '+Q.length+'</span>'+dots()+'</div><p class="claim">'+esc(q.c)+'</p><div class="opts">';
+  q.o.forEach(function(o,j){var cls='',dis='';if(picked!==null){dis=' disabled';if(o[1])cls=' right';else if(j===picked)cls=' wrong'}
+    h+='<button type="button" class="opt'+cls+'" id="q'+qi+'o'+j+'" data-j="'+j+'"'+dis+'><span class="k">'+'ABC'[j]+'</span><span>'+esc(o[0])+'</span></button>'});
+  h+='</div>';
+  if(picked!==null){var o=q.o[picked],ok=!!o[1],best=q.o.find(function(x){return x[1]});
+    h+='<div class="verdict"><b style="color:var('+(ok?'--good':'--bad')+')">'+(ok?'✓ Strongest evidence':'✗ Not enough on its own')+'</b><span>'+esc(o[2])+'</span>'+(ok?'':'<span><b>Stronger:</b> '+esc(best[0])+'. '+esc(best[2])+'</span>')+'</div><div class="chips"><button type="button" class="btn" id="qnext">'+(qi<Q.length-1?'Next claim':'See result')+'</button></div>'}
+  qz.innerHTML=h;
+  qz.querySelectorAll('.opt').forEach(function(b){b.onclick=function(){if(picked!==null)return;picked=+b.dataset.j;res[qi]=!!Q[qi].o[picked][1];draw();var n=document.getElementById('qnext');if(n)n.focus()}});
+  var n=document.getElementById('qnext');if(n)n.onclick=function(){qi++;picked=null;draw();var f=qz.querySelector('.opt');if(f)f.focus()};
+}
+function dots(){return '<span class="dots" aria-hidden="true">'+Q.map(function(_,i){return'<i class="'+(res[i]===true?'r':res[i]===false?'w':'')+(i===qi?' c':'')+'"></i>'}).join('')+'</span>'}
+draw();
+
+/* ---------- toolkit ---------- */
+var KIT=[
+ {t:"Hidden owners",s:"Paper owner ≠ real owner",tech:["Verifiable credentials","DIDs","vLEI"],
+  could:"A beneficial-ownership claim signed by the registry, such as \"the Alkhayyat brothers own 50% each\", that a bank or brand can check instantly and that can't be quietly edited.",
+  here:"Albania's register named the real owners of Albania Land Development, while a different person was the legal shareholder. AlbChrome already has an LEI.",
+  lim:"A credential is only as true as whoever issued it. If the registry accepts a nominee, the credential certifies the nominee. Digitising a gap doesn't close it."},
+ {t:"Land cleared without a permit",s:"Environmental harm",tech:["Satellite imagery","Change detection","AI land-cover"],
+  could:"Before-and-after images showing exactly when trees, dunes and wetland were cleared, independent of anyone's paperwork.",
+  here:"Wetlands International's satellite analysis found a road, a bridge and clearing at Zvërnec by May 2026, with no published environmental assessment or permit.",
+  lim:"Imagery shows change, not legality. You still need the permit record. Clouds, resolution and cost limit it, and the same tools can surveil residents and protesters."},
+ {t:"Disputed land titles",s:"Who really owns the coast?",tech:["Blockchain land registry","Web3","Timestamping"],
+  could:"A tamper-evident history of every sale, so a title can't be backdated or forged after the fact.",
+  here:"Reporting says SPAK is examining allegedly fraudulent titles and prices inflated 22-fold. Albanian land ownership has been contested since the 1990s.",
+  lim:"The \"oracle problem\": a blockchain makes a bad first entry permanent. If a fraudulent title is entered, the ledger protects the fraud."},
+ {t:"Where did the chrome come from?",s:"Mineral traceability",tech:["IoT scales and GPS","Digital product passport","Mass balance"],
+  could:"Sensors at the mine gate and the port linking each load to its mine, travelling with the ore as a digital record.",
+  here:"Much Albanian chrome passes through traders in Hong Kong and the UAE before reaching a smelter. Every handover is where origin can get lost.",
+  lim:"Ore gets blended, so physical tracing often gives way to mass balance. Sensors cost money, and small mines may be pushed out rather than helped."},
+ {t:"Are workers paid fairly?",s:"Wages and labour rights",tech:["Zero-knowledge proofs","Digital payroll","Worker-voice apps"],
+  could:"A factory proves \"everyone earned at least the legal minimum\" without exposing anyone's pay slip. Workers report problems anonymously.",
+  here:"In the 2016 study, about half of the shoe and garment workers interviewed were not paid the legal minimum. The minimum is now €517.",
+  lim:"A proof only checks the data it's given. Off-the-books overtime and informal work stay invisible. Worker apps can expose workers to retaliation if anonymity fails."},
+ {t:"Fast-tracked deals",s:"Procurement and permits",tech:["Open contracting data","AI anomaly detection"],
+  could:"Every strategic-investor decision, tender and permit published as structured data, with AI flagging unusual speed or missing steps.",
+  here:"The Sazan status was reportedly granted without a business plan. SPAK is examining contracts awarded without public tenders.",
+  lim:"It only works if governments publish complete data. AI flags can be false positives, and a flag can be treated as an accusation."},
+ {t:"Who is connected to whom?",s:"Network screening",tech:["AI entity resolution","Knowledge graphs (Sayari)"],
+  could:"Linking millions of records across countries to reveal shared owners, directors and addresses that no human would find by hand.",
+  here:"This site's money map was built this way: Sayari linked Kushner to an Abu Dhabi company co-owned by Eagle Hills.",
+  lim:"Sayari flagged both Abu Dhabi firms with a \"possibly the same as\" regulatory-risk match, and three firms share the Atlantic Incubation Partners name with no common ID. Treating a guess as a fact can wrongly label people."}
+];
+var kl=document.getElementById('kitlist'),kb=document.getElementById('kitbody');
+KIT.forEach(function(k,i){var b=document.createElement('button');b.type='button';b.id='kit-'+i;b.setAttribute('role','tab');b.setAttribute('aria-controls','kitbody');b.innerHTML=esc(k.t)+'<small>'+esc(k.s)+'</small>';kl.appendChild(b)});
+var setK=SF.tabs(kl,KIT.length,show);
+function show(i){setK(i);var k=KIT[i];kb.setAttribute('aria-labelledby','kit-'+i);
+  kb.innerHTML='<span class="label">Problem '+(i+1)+' of '+KIT.length+'</span><h3 style="font-size:1.45rem">'+esc(k.t)+'</h3><div class="techs">'+k.tech.map(function(t){return'<span>'+esc(t)+'</span>'}).join('')+'</div><div class="grid3"><div><span class="label">What it could prove</span><span>'+esc(k.could)+'</span></div><div><span class="label">In this case</span><span>'+esc(k.here)+'</span></div><div class="lim"><span class="label">Limits and unintended consequences</span><span>'+esc(k.lim)+'</span></div></div>';
+  SF.store('sazan-kit',String(i))}
+var ks=parseInt(SF.store('sazan-kit'),10);show(isNaN(ks)||ks<0||ks>=KIT.length?0:ks);
+})();
+</script>
+</body>
+</html>
