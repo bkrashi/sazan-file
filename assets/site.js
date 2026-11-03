@@ -5,6 +5,14 @@ var SF=(function(){
   function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
   function store(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}}
   var KIND={reg:"Official record",press:"Press / NGO report",alleg:"Allegation"};
+  /* the five ties used across the site */
+  var TIES=[
+    {id:"T1",t:"Hidden ownership",q:"Can you see who really owns or controls it?"},
+    {id:"T2",t:"Bent rules",q:"Are laws changed, skipped or left unenforced?"},
+    {id:"T3",t:"Cheap land and labour",q:"Is value taken from public land or low-paid work?"},
+    {id:"T4",t:"Evidence gap",q:"Where do the records stop?"},
+    {id:"T5",t:"Outside pressure",q:"Who has leverage to change it?"}
+  ];
   function tag(k){return '<span class="tag t-'+k+'">'+KIND[k]+'</span>'}
   var tipEl=null;
   function tip(ev,html){
@@ -28,5 +36,5 @@ var SF=(function(){
     });
     return function(i){btns.forEach(function(b,j){b.setAttribute('aria-selected',String(j===i));b.tabIndex=j===i?0:-1})};
   }
-  return {el:el,esc:esc,store:store,KIND:KIND,tag:tag,tip:tip,tabs:tabs};
+  return {el:el,esc:esc,store:store,KIND:KIND,TIES:TIES,tag:tag,tip:tip,tabs:tabs};
 })();
